@@ -315,7 +315,7 @@ for ($i=1;$i<=$days_current_month;$i++)
 	$class = "";
     if (file_exists(WEBSITE_PATH.$directory.$year."/".$month."/".$res))
     {
-	echo "<a href='index.php?year=".$year."&month=".$month."&day=".$res."' ".$class.">".$res."</a>  ";
+	echo "<a href='index.php?year=".$year."&month=".$month."&day=".$res."' title='".date("l", mktime(0, 0, 0, $month, $res, $year))."' ".$class.">".$res."</a>  ";
     }
     else
     {
