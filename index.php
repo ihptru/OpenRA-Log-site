@@ -180,7 +180,7 @@ echo "<html><head>
 
 	    <input style='margin-top:-10px;' type='text' size=50px name='searchtext'>
 	    <p style='margin-top:-30px;margin-left:315px;'><input type='submit' value='Search in Logs'></p>
-	    <p style='float:right'><a href='stats/index.html'>stats</a><br><a href='mapstats/index.html'>mostly played maps</a></p>
+	    <p style='float:right'><a href='stats/index.html'>stats</a><br><a href='mapstats/index.html'>mostly played maps</a><br><a href='serverstats/index.html'>servers' stats</a></p>
 	    </form>
 	    <div id='main' style='margin-top:50px;'>";
 		$post_year = $year;
