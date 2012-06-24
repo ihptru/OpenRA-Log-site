@@ -180,7 +180,7 @@ echo "<html><head>
 
 	    <input style='margin-top:-10px;' type='text' size=50px name='searchtext'>
 	    <p style='margin-top:-30px;margin-left:315px;'><input type='submit' value='Search in Logs'></p>
-	    <p style='float:right'><a href='stats/index.html'>stats</a><br><a href='mapstats/index.html'>mostly played maps</a><br><a href='serverstats/index.html'>servers' stats</a></p>
+	    <p style='float:right'><a href='stats/index.html'>stats</a></p>
 	    </form>
 	    <div id='main' style='margin-top:50px;'>";
 		$post_year = $year;
@@ -336,18 +336,35 @@ foreach ($lines as $line_num => $line)
 
 echo "</table>";
 
-// 'next day' link
-
 $TS = strtotime($year."-".$month."-".$day);
 
 if($TS !== false)
 {
+    // 'previous day' link
+    $prev = false;
+    $prev_day_year = date('Y', strtotime('-1 day', $TS));
+    $prev_day_month = date('m', strtotime('-1 day', $TS));
+    $prev_day_day = date('d', strtotime('-1 day', $TS));
+    if (file_exists(WEBSITE_PATH.$directory.$prev_day_year."/".$prev_day_month."/".$prev_day_day))
+    {
+	echo "<br><p id='main'><a href='index.php?year=".$prev_day_year."&month=".$prev_day_month."&day=".$prev_day_day."'>&lt;&lt;&lt; Previous Day</a>";
+	$prev = true;
+    }
+    // 'next day' link
     $next_day_year = date('Y', strtotime('+1 day', $TS));
     $next_day_month = date('m', strtotime('+1 day', $TS));
     $next_day_day = date('d', strtotime('+1 day', $TS));
     if (file_exists(WEBSITE_PATH.$directory.$next_day_year."/".$next_day_month."/".$next_day_day))
     {
-	echo "<br><p id='main'><a href='index.php?year=".$next_day_year."&month=".$next_day_month."&day=".$next_day_day."'>Next Day &gt;&gt;&gt;</a><p>";
+	if ($prev)
+	    echo " | <a href='index.php?year=".$next_day_year."&month=".$next_day_month."&day=".$next_day_day."'>Next Day &gt;&gt;&gt;</a><p>";
+	else
+	    echo "<br><p id='main'><a href='index.php?year=".$next_day_year."&month=".$next_day_month."&day=".$next_day_day."'>Next Day &gt;&gt;&gt;</a><p>";
+    }
+    else
+    {
+	if ($prev)
+	    echo "</p>";
     }
 }
 
