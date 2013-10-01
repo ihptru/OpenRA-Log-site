@@ -69,7 +69,21 @@ function color_strings($string)
 	{
 	    $new_string = $new_string." ".$line_array[$i];
 	}
-	$new_string = preg_replace("/(https?:\/\/[^ ]*)/i", "<a href='$1' target=_blank>$1</a>", htmlspecialchars($new_string));
+	if (isset($_POST['searchtext']))
+        {
+	    $pattern = "/".$_POST['searchtext']."/i";
+	    preg_match($pattern, $new_string, $matches);
+	    if ($matches)
+	    {
+		foreach ($matches as $item)
+		{
+		    $replacement = array("<span class='s'>".htmlspecialchars($item)."</span>");
+		    $new_string = preg_replace(array("/".$item."/i"), $replacement, $new_string);
+		}
+	    }
+        }
+	else
+	    $new_string = preg_replace("/(https?:\/\/[^ ]*)/i", "<a href='$1' target=_blank>$1</a>", htmlspecialchars($new_string));
 	$content .= "<span class='d'> &lt;<span class='e'>".htmlspecialchars($name)."</span>&gt;".$new_string."</span>";
     }
     else
@@ -108,15 +122,17 @@ function searchtext()
     if (isset($_POST['searchtext']))
     {
 	$text = $_POST['searchtext'];
-	if (strlen($text) < 4)
+	if (strlen($text) < 3)
 	{	
-	    echo "<script type='text/javascript'>alert('At least 4 characters required')
+	    echo "<script type='text/javascript'>alert('At least 3 characters required')
 	    window.location.href = '/'</script>";
 	    return False;
 	}
-	$execute = shell_exec('grep -ir "'.htmlspecialchars($text).'" '.WEBSITE_PATH.'openra/ | grep -v grep');
+	$execute = shell_exec('grep -ir "^.*T.* .*'.htmlspecialchars($text).'.*$" '.WEBSITE_PATH.'openra/ | grep -v "^.*T.* \*.*$" | grep -v grep | sort -r');
 	$searcharray = explode("\n", $execute);
 	$trash = array_pop($searcharray);
+	if (!$searcharray)
+	    echo "<script type='text/javascript'>alert('Nothing found!')</script>";
 	return $searcharray;
     }
     return False;
@@ -130,13 +146,14 @@ if ($content)
     <body>
     <p id='main'><a href='/'><<< Back</a></p>
     <table id='main'>";
+    echo "<tr><td valgn='top'><b>&nbsp;&nbsp;Results: </b></td><td><b>".count($content)."</b></td></tr>";
     foreach ($content as $value)
     {
 	$file_ts = explode(":", $value);
 	$file_ts = $file_ts[1];
 	$file_ts = explode("T", $file_ts);
 	$file_ts = $file_ts[0];
-	echo "<tr><td valign='top'>".$file_ts."</td>".color_strings($value)."</tr>";
+	echo "<tr><td valign='top' width='80px'>".$file_ts."</td>".color_strings($value)."</tr>";
     }
     echo "</table></body></html>";
 }
