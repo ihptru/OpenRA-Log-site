@@ -1,6 +1,7 @@
 body {
     font: 12px/16px Verdana, Arial, Helvetica;
 }
+
 #main {
     font-family: monospace;
 }
@@ -19,24 +20,24 @@ a:hover{
 
 select {
     margin: 5px 0;
-	padding: 7px 5px;
-	border-width: 1px;
-	border-style: solid;
-  	border-color: #322014; 	
-	background-color: #fff;
-	font: 11px 'Lucida Grande', Verdana, Helvetica, Sans-Serif;
-	color: #0000FF;
+    padding: 7px 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #322014; 	
+    background-color: #fff;
+    font: 11px 'Lucida Grande', Verdana, Helvetica, Sans-Serif;
+    color: #0000FF;
 }
 
 input { 
-	height: 30px;
-	margin: 0;
-	padding: 2px 3px; 
-	border: 1px solid #000;
-	background: #fff;	
-	font: bold 11px 'Lucida Grande', Verdana, Helvetica, Sans-Serif;
-	text-decoration: none;	
-	color: #0000ff;
+    height: 30px;
+    margin: 0;
+    padding: 2px 3px; 
+    border: 1px solid #000;
+    background: #fff;	
+    font: bold 11px 'Lucida Grande', Verdana, Helvetica, Sans-Serif;
+    text-decoration: none;	
+    color: #0000ff;
 }
 
 .a { color: #800000; }

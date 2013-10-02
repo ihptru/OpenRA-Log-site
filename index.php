@@ -1,6 +1,6 @@
 <?PHP
 
-# Copyright 2012 OpenRA Community
+# Copyright 2012-2014 OpenRA Community
 #
 # This file is part of orabot, which is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -115,7 +115,6 @@ function selected($form, $current)
 	return "false";
     }
 }
-###########################
 
 function searchtext()
 {
@@ -159,7 +158,6 @@ if ($content)
 }
 else
 {
-
 // set up $year, $month and $day vars
 if (isset($_GET["year"]) and isset($_GET["month"]) and isset($_GET["day"]))
 {
