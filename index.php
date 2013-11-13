@@ -86,6 +86,17 @@ function color_strings($string)
 	    $new_string = preg_replace("/(https?:\/\/[^ ]*)/i", "<a href='$1' target=_blank>$1</a>", htmlspecialchars($new_string));
 	$content .= "<span class='d'> &lt;<span class='e'>".htmlspecialchars($name)."</span>&gt;".$new_string."</span>";
     }
+    elseif ($line_array[1] == "***" and $line_array[2] == "NOTICE")
+    {
+	$name = $line_array[6];
+	$channel = $line_array[4];
+	$new_string = "";
+	for ($i=7;$i<=count($line_array);$i++)
+	{
+	    $new_string = $new_string." ".$line_array[$i];
+	}
+	$content .= "<span class='c'> <span class='e'>-".htmlspecialchars($name)."/".htmlspecialchars($channel)."-</span>".$new_string."</span>";
+    }
     else
     {
 	// nick, modes, kicks, topics
