@@ -88,7 +88,7 @@ function color_strings($string)
     }
     elseif ($line_array[1] == "***" and $line_array[2] == "NOTICE")
     {
-	$name = $line_array[6];
+	$name = substr($line_array[6],0,-1);
 	$channel = $line_array[4];
 	$new_string = "";
 	for ($i=7;$i<=count($line_array);$i++)
