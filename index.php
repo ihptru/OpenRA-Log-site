@@ -28,7 +28,7 @@ function color_strings($string)
     $time = explode('T', $line_array[0]);
     $time = $time[1];
     $new_string = "";
-    for ($i=1;$i<=count($line_array);$i++)
+    for ($i=1;$i<count($line_array);$i++)
     {
 	$new_string = $new_string." ".$line_array[$i];
     }
@@ -41,7 +41,7 @@ function color_strings($string)
 	//join
 	$name = $line_array[2];
 	$new_string = "";
-	for ($i=4;$i<=count($line_array);$i++)
+	for ($i=4;$i<count($line_array);$i++)
 	{
 	    $new_string = $new_string." ".$line_array[$i];
 	}
@@ -52,7 +52,7 @@ function color_strings($string)
 	// quit or part
 	$name = $line_array[2];
 	$new_string = "";
-	for ($i=4;$i<=count($line_array);$i++)
+	for ($i=4;$i<count($line_array);$i++)
 	{
 	    $new_string = $new_string." ".$line_array[$i];
 	}
@@ -65,7 +65,7 @@ function color_strings($string)
 	$name = explode(">", $name[1]);
 	$name = $name[0];
 	$new_string = "";
-	for ($i=2;$i<=count($line_array);$i++)
+	for ($i=2;$i<count($line_array);$i++)
 	{
 	    $new_string = $new_string." ".$line_array[$i];
 	}
@@ -91,7 +91,7 @@ function color_strings($string)
 	$name = substr($line_array[6],0,-1);
 	$channel = $line_array[4];
 	$new_string = "";
-	for ($i=7;$i<=count($line_array);$i++)
+	for ($i=7;$i<count($line_array);$i++)
 	{
 	    $new_string = $new_string." ".$line_array[$i];
 	}
