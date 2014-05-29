@@ -26,12 +26,6 @@ function color_strings($string)
 {
     $line_array = explode(' ', $string);
     $time = explode('T', $line_array[0]);
-    $time_date = explode(':', $time[0]);
-    $time_date = explode('-', $time_date[1]);
-    $time_year = $time_date[0];
-    $time_month = $time_date[1];
-    $time_day = $time_date[2];
-    $time = $time[1];
     $new_string = "";
     for ($i=1;$i<count($line_array);$i++)
     {
@@ -41,10 +35,17 @@ function color_strings($string)
     $content = "";
     if (isset($_POST['searchtext']))
     {
+    	$time_date = explode(':', $time[0]);
+    	$time_date = explode('-', $time_date[1]);
+    	$time_year = $time_date[0];
+    	$time_month = $time_date[1];
+    	$time_day = $time_date[2];
+    	$time = $time[1];
     	$content .= "<td valign='top'>[<a href='/?year=".$time_year."&month=".$time_month."&day=".$time_day."#".$time."'>".$time."</a>]</td>";
     }
     else
     {
+    	$time = $time[1];
     	$content .= "<td valign='top'><a name='".$time."'></a>[".$time."]</td>";
     }
     $content .= "<td valign='top'>";
