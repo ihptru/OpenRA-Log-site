@@ -35,7 +35,7 @@ function color_strings($string)
 	}
 	
 	$content = "";
-	if (isset($_POST['searchtext']))
+	if (isset($_GET['search']))
 	{
 		$time_date = explode(':', $time[0]);
 		$time_date_t = explode('-', $time_date[1]);
@@ -85,9 +85,9 @@ function color_strings($string)
 			$new_string = $new_string." ".htmlspecialchars($line_array[$i]);
 		}
 		
-		if (isset($_POST['searchtext']))
+		if (isset($_GET['search']))
 		{
-			$pattern = "/".$_POST['searchtext']."/i";
+			$pattern = "/".$_GET['search']."/i";
 			preg_match($pattern, $new_string, $matches);
 			if ($matches)
 			{
@@ -141,9 +141,9 @@ function selected($form, $current)
 
 function searchtext()
 {
-	if (isset($_POST['searchtext']))
+	if (isset($_GET['search']))
 	{
-		$text = $_POST['searchtext'];
+		$text = $_GET['search'];
 		if (strlen($text) < 3)
 		{	
 			echo "<script type='text/javascript'>alert('At least 3 characters required')
@@ -219,9 +219,9 @@ else
 			<a href='http://open-ra.org' target='_blank'><img src='soviet-logo.png' style='border:0px'></a><h2>".$info_message."</h2>
 		</td>
 		<td style='padding-left:50px;padding-right:20px'>
-			<form method=POST action=''>
+			<form method=GET action=''>
 
-			<input style='margin-top:-10px;' type='text' size=50px name='searchtext'>
+			<input style='margin-top:-10px;' type='text' size=50px name='search'>
 			<p style='margin-top:-30px;margin-left:315px;'><input type='submit' value='Search in Logs'></p>
 			<p style='float:right'><a href='stats/index.html'>stats</a></p>
 			</form>
