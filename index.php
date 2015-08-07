@@ -218,7 +218,7 @@ if ($content)
 {
 	echo "<html><head>
 		<meta charset='utf-8'>
-		<link rel='stylesheet' type='text/css' href='style.css'>
+		<link rel='stylesheet' type='text/css' href='style.css?1'>
 		<title>IRC Logs of #openra</title></head>
 		<body>
 		<p id='main'><a href='/'><<< Back</a></p>
@@ -271,9 +271,10 @@ else
 		<td style='padding-left:50px;padding-right:20px'>
 			<form method=GET action=''>
 
-			<input style='margin-top:-10px;' type='text' size=50px name='search'>
+			<input class='search-field' type='text' size=50px name='search'>
 			<p style='margin-top:-30px;margin-left:315px;'><input type='submit' value='Search in Logs'></p>
 			<p style='float:right'><a href='stats/index.html'>stats</a></p>
+			<p class='operator-info'>Add the operator AND to perform a more precise search.</p>
 			</form>
 			<div id='main' style='margin-top:50px;'>";
 	$post_year = $year;

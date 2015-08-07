@@ -46,3 +46,15 @@ input {
 .d { color: #404040; }
 .e { background-color: #FFFF99;}
 .s { background-color: #FF0000; color: #FFFFFF; }
+
+.operator-info {
+    float:left;
+    position: absolute;
+    font-size: 0.72em;
+    margin-top: -5px;
+}
+
+.search-field {
+    margin-top:-10px;
+    width: 316px;
+}
