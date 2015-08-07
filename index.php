@@ -87,16 +87,33 @@ function color_strings($string)
 		
 		if (isset($_GET['search']))
 		{
-			$pattern = "/".$_GET['search']."/i";
-			preg_match($pattern, $new_string, $matches);
-			if ($matches)
+
+			$logic_and = strpos(strtolower($_GET['search']), " && ");
+
+			$search_items_color = array();
+
+			if ($logic_and)
 			{
-				foreach ($matches as $item)
+				$search_items_color = explode(" && ", strtolower($_GET['search']));
+			}
+			else {
+				$search_items_color = explode(" and ", strtolower($_GET['search']));
+			}
+
+			foreach ($search_items_color as $search_key_color)
+			{
+				$pattern = "/".$search_key_color."/i";
+				preg_match($pattern, $new_string, $matches);
+				if ($matches)
 				{
-					$replacement = array("<span class='s'>".htmlspecialchars($item)."</span>");
-					$new_string = preg_replace(array("/".$item."/i"), $replacement, $new_string);
+					foreach ($matches as $item)
+					{
+						$replacement = array("<span class='s'>".htmlspecialchars($item)."</span>");
+						$new_string = preg_replace(array("/".$item."/i"), $replacement, $new_string);
+					}
 				}
 			}
+
 		}
 		else
 			$new_string = preg_replace("/(https?:\/\/[^ ]*)/i", "<a href='$1' target=_blank>$1</a>", $new_string);
@@ -150,7 +167,32 @@ function searchtext()
 				window.location.href = '/'</script>";
 			return False;
 		}
-		$execute = shell_exec('grep -ir "^.*T.* .*'.htmlspecialchars($text).'.*$" '.WEBSITE_PATH.'openra/ | grep -v "^.*T.* \*.*$" | grep -v grep | sort -r');
+
+
+		$logic_and = strpos(strtolower($text), " && ");
+
+		$search_items = array();
+
+		if ($logic_and)
+		{
+			$search_items = explode(" && ", strtolower($text));
+		}
+		else {
+			$search_items = explode(" and ", strtolower($text));
+		}
+
+		$to_grep = 'grep -ir "^.*T.* .*'.htmlspecialchars($search_items[0]).'.*$" '.WEBSITE_PATH.'openra/ ';
+
+		if (count($search_items) > 1)
+		{
+			$first_grep_shift = array_shift($search_items);
+			foreach ($search_items as $search_key)
+			{
+				$to_grep .= '| grep -i "^.*T.* .*'.htmlspecialchars($search_key).'.*$" ';
+			}
+		}
+
+		$execute = shell_exec($to_grep . ' | grep -v "^.*T.* \*.*$" | grep -v grep | sort -r');
 		$searcharray = explode("\n", $execute);
 		$trash = array_pop($searcharray);
 		if (!$searcharray)
