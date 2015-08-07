@@ -27,7 +27,15 @@ $directory = "openra/";
 function color_strings($string)
 {
 	$line_array = explode(' ', $string);
+
+	if (count($line_array) < 2)
+		return "";
+
 	$time = explode('T', $line_array[0]);
+
+	if (count($time) < 2)
+		return "";
+
 	$new_string = "";
 	for ($i=1; $i<count($line_array); $i++)
 	{
@@ -258,7 +266,7 @@ else
 		<table id='main' style='height:200px;'>
 		<tr>
 		<td width=350px;>
-			<a href='http://open-ra.org' target='_blank'><img src='soviet-logo.png' style='border:0px'></a><h2>".$info_message."</h2>
+			<a href='http://openra.net' target='_blank'><img src='soviet-logo.png' style='border:0px'></a><h2>".$info_message."</h2>
 		</td>
 		<td style='padding-left:50px;padding-right:20px'>
 			<form method=GET action=''>
