@@ -218,7 +218,7 @@ if ($content)
 {
 	echo "<html><head>
 		<meta charset='utf-8'>
-		<link rel='stylesheet' type='text/css' href='style.css?1'>
+		<link rel='stylesheet' type='text/css' href='style.css'>
 		<title>IRC Logs of #openra</title></head>
 		<body>
 		<p id='main'><a href='/'><<< Back</a></p>
@@ -273,7 +273,7 @@ else
 
 			<input class='search-field' type='text' size=50px name='search'>
 			<p style='margin-top:-30px;margin-left:315px;'><input type='submit' value='Search in Logs'></p>
-			<p style='float:right'><a href='stats/index.html'>stats</a></p>
+			<p style='float:right'><a href='stats/index.html'>stats</a><br /><a href='http://ingame.logs.openra.net/'>in-game logs</a></p>
 			<p class='operator-info'>Add the operator AND to perform a more precise search.</p>
 			</form>
 			<div id='main' style='margin-top:50px;'>";
