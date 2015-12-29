@@ -495,22 +495,3 @@ else
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/33786919" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-
-<?php
-echo '
-<!-- Start of StatCounter Code for Default Guide -->
-<script type="text/javascript">
-var sc_project=7550490; 
-var sc_invisible=1; 
-var sc_security="27dc495c"; 
-</script>
-<script type="text/javascript"
-src="http://www.statcounter.com/counter/counter.js"></script>
-<noscript><div class="statcounter"><a title="vBulletin
-statistic" href="http://statcounter.com/vbulletin/"
-target="_blank"><img class="statcounter"
-src="http://c.statcounter.com/7550490/0/27dc495c/1/"
-alt="vBulletin statistic"></a></div></noscript>
-<!-- End of StatCounter Code for Default Guide -->
-';
-?>
