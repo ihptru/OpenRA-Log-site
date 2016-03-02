@@ -427,7 +427,7 @@ else
 	{
 		echo "<tr>".color_strings($line) . "</tr>";
 
-		if ((int)$line_num %100 == 0 && (int)$line_num != 0)
+		if ((int)$line_num %250 == 0 && (int)$line_num != 0)
 		{
 			echo "<tr><td></td><td>";
 			echo '
