@@ -416,7 +416,7 @@ else
 			echo $res. "  ";
 		}
 	}
-	echo"</td>
+	echo "</td>
 		</tr>
 		</table>
 	";
@@ -427,16 +427,16 @@ else
 	{
 		echo "<tr>".color_strings($line) . "</tr>";
 
-		if ((int)$line_num %250 == 0 && (int)$line_num != 0)
+		if ((int)$line_num %3000 == 0 && (int)$line_num != 0)
 		{
 			echo "<tr><td></td><td>";
 			echo '
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- logs.openra.net -->
+			<!-- logs.openra.net and ingame.logs -->
 			<ins class="adsbygoogle"
 			     style="display:inline-block;width:728px;height:90px"
 			     data-ad-client="ca-pub-1502331739186135"
-			     data-ad-slot="5022330200"></ins>
+			     data-ad-slot="6956233403"></ins>
 			<script>
 			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
@@ -451,11 +451,11 @@ else
 	echo '
 		<div class="google-adsense-block">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- logs.openra.net -->
+			<!-- logs.openra.net and ingame.logs -->
 			<ins class="adsbygoogle"
 			     style="display:inline-block;width:728px;height:90px"
 			     data-ad-client="ca-pub-1502331739186135"
-			     data-ad-slot="5022330200"></ins>
+			     data-ad-slot="6956233403"></ins>
 			<script>
 			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
