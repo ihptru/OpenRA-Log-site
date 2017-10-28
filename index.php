@@ -95,7 +95,6 @@ function color_strings($string)
 		
 		if (isset($_GET['search']))
 		{
-
 			$logic_and = strpos(strtolower($_GET['search']), " && ");
 
 			$search_items_color = array();
@@ -114,11 +113,8 @@ function color_strings($string)
 				preg_match($pattern, $new_string, $matches);
 				if ($matches)
 				{
-					foreach ($matches as $item)
-					{
-						$replacement = array("<span class='s'>".htmlspecialchars($item)."</span>");
-						$new_string = preg_replace(array("/".$item."/i"), $replacement, $new_string);
-					}
+					$replacement = array("<span class='s'>".htmlspecialchars($search_key_color)."</span>");
+					$new_string = preg_replace(array("/".$search_key_color."/i"), $replacement, $new_string);
 				}
 			}
 
